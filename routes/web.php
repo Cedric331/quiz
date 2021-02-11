@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::inertia('/about', 'About');
+
+Route::inertia('/', 'Home');
 
 Auth::routes();
 
