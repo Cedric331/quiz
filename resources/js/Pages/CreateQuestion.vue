@@ -1,11 +1,10 @@
 <template>
 <div class="container-fluid px-0 z-depth-1">
-
+<notifications group="success" position="bottom right" />
   <section class="p-5 text-center" 
     style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background.jpg); background-size: cover; background-position: center center;height:100vh;">
 
     <form class="my-5 mx-md-5" action="">
-
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card">
@@ -68,7 +67,15 @@ export default {
             if (response.status == 200) {
                question.value = "",
                responseValid.value = "",
-               responseError.value = ""
+               responseError.value = "",
+
+               this.$notify({
+                  group: 'success',
+                  type: 'success',
+                  title: 'Succès',
+                  speed: 1000,
+                  text: 'Question enregistrée!',
+               });
             }
          })
          .catch(error => {
