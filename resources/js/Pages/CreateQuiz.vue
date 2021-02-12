@@ -30,7 +30,8 @@
                </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-outline-primary btn-rounded my-4 waves-effect">Créer</button>
+                  <button type="submit" class="btn btn-outline-primary btn-rounded my-4 waves-effect">Créer les questions</button>
+                  <button type="button" @click="annuler()" class="ml-2 btn btn-outline-danger btn-rounded my-4 waves-effect">Annuler</button>
                 </div>
 
               </form>
@@ -54,6 +55,9 @@ export default {
     }
   },
   methods: {
+     annuler(){
+        window.location = "/account"
+     },
      submit(){
         this.erreurs = {};
         axios.post('/create/quiz', {
@@ -62,7 +66,7 @@ export default {
          })
          .then(response => {
             if (response.status == 200) {
-               window.location = "/account"
+               window.location = "/create/questions/"+response.data
             }
          })
          .catch(error => {

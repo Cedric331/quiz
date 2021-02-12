@@ -22,6 +22,8 @@ Route::get('/account', 'UserController@index')->name('account')->middleware('aut
 Route::get('/create/quiz', 'QuizController@show')->name('show-quiz')->middleware('auth');
 Route::post('/create/quiz', 'QuizController@create')->name('create-quiz')->middleware('auth');
 
+Route::get('/create/questions/{id}', 'QuizController@createQuestions')->name('create-questions')->middleware('auth');
+
 
 Auth::routes();
 
