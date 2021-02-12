@@ -14,6 +14,7 @@
               <form class="text-center" style="color: #757575;" @submit.prevent="submit">
                 <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Création des questions pour "{{questionnaire.titre}}"</h3>
                <p class="text-muted">Il faut au moins 5 questions pour valider le questionnaire</p>
+               <p class="text-muted">Nombre de question actuellement : {{number}}</p>
             <div>
 
                <div class="form-floating">
@@ -23,9 +24,9 @@
                </div>
 
                <div class="form-floating my-2">
-                 <input type="text" class="form-control" id="response" :v-model="response" value="" placeholder="Indiquer la bonne réponse">
-                 <label for="response">Bonne réponse pour la question</label>
-                 <div v-if="erreurs && erreurs.response" class="text-danger">{{ erreurs.response[0] }}</div>
+                 <input type="text" class="form-control" id="responseValid" :v-model="responseValid" value="" placeholder="Indiquer la bonne réponse">
+                 <label for="responseValid">Bonne réponse pour la question</label>
+                 <div v-if="erreurs && erreurs.responseValid" class="text-danger">{{ erreurs.responseValid[0] }}</div>
                </div>
 
                <div class="form-floating">
@@ -55,12 +56,38 @@
 
 <script>
 export default {
-  props: ['questionnaire'],
+  methods: {
+      submit(){
+        this.erreurs = {};
+        axios.post('/create/questions/'+this.id, {
+            question: question.value,
+            response: responseValid.value,
+            responseError: responseError.value
+         })
+         .then(response => {
+            if (response.status == 200) {
+               question.value = "",
+               responseValid.value = "",
+               responseError.value = ""
+            }
+         })
+         .catch(error => {
+            if (error.response.status == 422) {
+                this.erreurs = error.response.data.errors || {};
+            }
+         });
+
+     }
+  },
+  props: ['questionnaire', 'number'],
   data () {
     return {
        erreurs: {},
        question: '',
        response: '',
+       responseValid: '',
+       responseError: '',
+       id: this.questionnaire.id
     }
   },
 }

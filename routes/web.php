@@ -23,6 +23,7 @@ Route::get('/create/quiz', 'QuizController@show')->name('show-quiz')->middleware
 Route::post('/create/quiz', 'QuizController@create')->name('create-quiz')->middleware('auth');
 
 Route::get('/create/questions/{id}', 'QuizController@createQuestions')->name('create-questions')->middleware('auth');
+Route::post('/create/questions/{id}', 'QuizController@addQuestions')->name('add-questions')->middleware('auth');
 
 
 Auth::routes();

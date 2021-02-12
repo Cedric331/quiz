@@ -14,4 +14,5 @@ class Questionnaire extends Model
     protected $fillable = [
       'titre', 'user_id', 'theme_id'
   ];
+
 }

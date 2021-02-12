@@ -4941,13 +4941,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['questionnaire'],
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.erreurs = {};
+      axios.post('/create/questions/' + this.id, {
+        question: question.value,
+        response: responseValid.value,
+        responseError: responseError.value
+      }).then(function (response) {
+        if (response.status == 200) {
+          question.value = "", responseValid.value = "", responseError.value = "";
+        }
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this.erreurs = error.response.data.errors || {};
+        }
+      });
+    }
+  },
+  props: ['questionnaire', 'number'],
   data: function data() {
     return {
       erreurs: {},
       question: '',
-      response: ''
+      response: '',
+      responseValid: '',
+      responseError: '',
+      id: this.questionnaire.id
     };
   }
 });
@@ -41343,6 +41367,13 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
+                      _c("p", { staticClass: "text-muted" }, [
+                        _vm._v(
+                          "Nombre de question actuellement : " +
+                            _vm._s(_vm.number)
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c("div", [
                         _c("div", { staticClass: "form-floating" }, [
                           _c("input", {
@@ -41372,20 +41403,20 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               type: "text",
-                              id: "response",
-                              "v-model": _vm.response,
+                              id: "responseValid",
+                              "v-model": _vm.responseValid,
                               value: "",
                               placeholder: "Indiquer la bonne réponse"
                             }
                           }),
                           _vm._v(" "),
-                          _c("label", { attrs: { for: "response" } }, [
+                          _c("label", { attrs: { for: "responseValid" } }, [
                             _vm._v("Bonne réponse pour la question")
                           ]),
                           _vm._v(" "),
-                          _vm.erreurs && _vm.erreurs.response
+                          _vm.erreurs && _vm.erreurs.responseValid
                             ? _c("div", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.erreurs.response[0]))
+                                _vm._v(_vm._s(_vm.erreurs.responseValid[0]))
                               ])
                             : _vm._e()
                         ]),
