@@ -4949,7 +4949,7 @@ __webpack_require__.r(__webpack_exports__);
       this.erreurs = {};
       axios.post('/create/questions/' + this.id, {
         question: question.value,
-        response: responseValid.value,
+        responseValid: responseValid.value,
         responseError: responseError.value
       }).then(function (response) {
         if (response.status == 200) {

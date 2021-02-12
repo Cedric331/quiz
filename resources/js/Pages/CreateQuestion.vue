@@ -60,7 +60,7 @@ export default {
         this.erreurs = {};
         axios.post('/create/questions/'+this.id, {
             question: question.value,
-            response: responseValid.value,
+            responseValid: responseValid.value,
             responseError: responseError.value
          })
          .then(response => {

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Theme;
+use App\Question;
 use Inertia\Inertia;
 use App\Questionnaire;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionPost;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
@@ -53,12 +55,19 @@ class QuizController extends Controller
      }
     }
 
-    public function addQuestions($id)
+    public function addQuestions(QuestionPost $request, $id)
     {
       $questionnaire = Questionnaire::findOrFail($id);
+      dd($request);
 
       if (Gate::allows('questionnaire-edit', $questionnaire)) {
-         return response()->json('ok', 200);
+            $question = new Question;
+            $question->questionnaire_id = $questionnaire->id;
+            $question->question = $request->question;
+            $question->reponse = $request->responseValid;
+            $question->mauvaise_reponse = $request->responseError;
+
+         return response()->json($questionnaire->nombre_question, 200);
      }
     }
 }
