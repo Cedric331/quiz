@@ -5,7 +5,12 @@ import { App, plugin } from '@inertiajs/inertia-vue'
 import Vue from 'vue'
 import { InertiaProgress } from '@inertiajs/progress'
 
-InertiaProgress.init()
+InertiaProgress.init({
+   delay: 250,
+   color: '#29d',
+   includeCSS: true,
+   showSpinner: false,
+})
 
 Vue.use(plugin)
 

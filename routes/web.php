@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::inertia('/', 'Home');
+Route::get('/', 'HomeController@index')->name('home')->middleware('guest');
+
+Route::get('/account', 'UserController@index')->name('account')->middleware('auth');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
