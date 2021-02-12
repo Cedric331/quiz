@@ -10,8 +10,8 @@ class QuizController extends Controller
 {
     public function create()
     {
-      $themes = json_encode(Theme::All());
-      
+      $themes = Theme::All();
+
        return Inertia::render('CreateQuiz',[
          'themes' => $themes
      ]);

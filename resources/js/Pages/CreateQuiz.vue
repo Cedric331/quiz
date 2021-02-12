@@ -13,10 +13,19 @@
 
               <form class="text-center" style="color: #757575;" action="#!">
                 <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Création du Quiz</h3>
+                
+               <div class="form-floating">
+                 <select class="form-select" id="theme" aria-label="Theme du questionnaire">
+                   <option disabled selected>Choisir un thème</option>
+                   <option  v-for="theme in themes" :key="theme.id"  :value="theme.id">{{theme.titre}}</option>
+                 </select>
+                 <label for="theme">Thème du questionnaire</label>
+               </div>
 
-                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Email">
-
-                <input type="password" id="defaultSubscriptionFormEmail" class="form-control" placeholder="Password">
+               <div class="form-floating my-3">
+                 <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre">
+                 <label for="titre">Titre du questionnaire</label>
+               </div>
 
                 <div class="text-center">
                   <button type="button" class="btn btn-outline-primary btn-rounded my-4 waves-effect">Créer</button>
@@ -37,7 +46,7 @@
 
 <script>
 export default {
-  props: [''],
-    
+  props: ['themes'],
+  
 }
 </script>
