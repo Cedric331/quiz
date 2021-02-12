@@ -19,6 +19,7 @@ class HomeController extends Controller
       return Inertia::render('Home', [
 
          'url' => URL::route('login'),
+         'quiz' => URL::route('quiz-index')
      ]);
     }
 }

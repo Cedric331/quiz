@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home')->middleware('guest');
 
+Route::get('/quiz', 'GameController@index')->name('quiz-index');
+Route::get('/quiz/reset', 'GameController@questionnaires');
+
 Route::get('/account', 'UserController@index')->name('account')->middleware('auth');
 
 Route::get('/create/quiz', 'QuizController@show')->name('show-quiz')->middleware('auth');

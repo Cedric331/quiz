@@ -20,4 +20,8 @@ class Questionnaire extends Model
      return $this->hasMany(Question::class);
   }
 
+  public function theme()
+  {
+    return $this->belongsTo(Theme::class);
+  }
 }

@@ -12,6 +12,6 @@ class Theme extends Model
      * @var array
      */
     protected $fillable = [
-      'titre'
+      'titre',
   ];
 }

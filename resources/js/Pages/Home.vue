@@ -11,7 +11,7 @@
             <h1 class="display-4 font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInUp">Bienvenue sur SuperQuiz</h1>
             <h5 class="pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 wow fadeInUp" data-wow-delay="0.2s">Participer à des quiz et vous pouvez même en créer, il faut juste <a :href="url">créer un compte</a> et c'est gratuit.</h5>
             <div class="wow fadeInUp" data-wow-delay="0.4s">
-              <a class="btn btn-purple btn-lg btn-rounded my-5">Jouer à un Quiz</a>
+              <a :href="quiz" class="btn btn-purple btn-lg btn-rounded my-5">Jouer à un Quiz</a>
             </div>
           </div>
         </div>
@@ -25,15 +25,7 @@
 
 <script>
 export default {
-  props: ['url'],
-  methods: {
-
-  },
-  data () {
-    return {
-       count: 0
-    }
-  },
+  props: ['url', 'quiz'],
     
 }
 </script>
