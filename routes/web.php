@@ -19,6 +19,8 @@ Route::get('/', 'HomeController@index')->name('home')->middleware('guest');
 
 Route::get('/account', 'UserController@index')->name('account')->middleware('auth');
 
+Route::get('/create/quiz', 'QuizController@create')->name('create-quiz')->middleware('auth');
+
 
 Auth::routes();
 

@@ -4869,13 +4869,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['url'],
-  methods: {},
+  props: ['createQuiz'],
   data: function data() {
-    return {
-      count: 0
-    };
+    return {};
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/CreateQuiz.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/CreateQuiz.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['']
 });
 
 /***/ }),
@@ -41017,6 +41066,114 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container my-5 p-5 z-depth-1 unique-color-dark" },
+    [
+      _c("section", { staticClass: "text-center white-text" }, [
+        _c(
+          "h2",
+          {
+            staticClass: "font-weight-bold mb-4 pb-2 text-white text-uppercase"
+          },
+          [_vm._v("Mon Espace")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row d-flex justify-content-around " }, [
+          _c(
+            "a",
+            {
+              staticClass: "col-12 col-md-5 mb-4 itemAccount",
+              attrs: { href: _vm.createQuiz }
+            },
+            [_vm._m(0)]
+          ),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("i", { staticClass: "fab fa-sass fa-3x text-white" }),
+      _vm._v(" "),
+      _c(
+        "h5",
+        { staticClass: "text-white font-weight-bold my-4 text-uppercase" },
+        [_vm._v("Créer un Quiz")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "col-12 col-md-5 mb-4 itemAccount", attrs: { href: "#" } },
+      [
+        _c("div", [
+          _c("i", { staticClass: "fas fa-brain fa-3x text-white" }),
+          _vm._v(" "),
+          _c(
+            "h5",
+            { staticClass: "text-white font-weight-bold my-4 text-uppercase" },
+            [_vm._v("Lancer un Quiz")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "col-12 col-md-6 itemAccount", attrs: { href: "#" } },
+      [
+        _c("div", [
+          _c("i", { staticClass: "fas fa-users fa-3x text-white" }),
+          _vm._v(" "),
+          _c(
+            "h5",
+            { staticClass: "text-white font-weight-bold my-4 text-uppercase" },
+            [_vm._v("Modifier mon compte")]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/CreateQuiz.vue?vue&type=template&id=2c8a3f5a&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Pages/CreateQuiz.vue?vue&type=template&id=2c8a3f5a& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
 }
 var staticRenderFns = [
@@ -41024,57 +41181,80 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "container my-5 p-5 z-depth-1 unique-color-dark" },
-      [
-        _c("section", { staticClass: "text-center white-text" }, [
-          _c(
-            "h2",
-            { staticClass: "font-weight-bold mb-4 pb-2 text-uppercase" },
-            [_vm._v("Mon Espace")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4 mb-4" }, [
-              _c("i", { staticClass: "fas fa-users fa-3x purple-text" }),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "#" } }, [
-                _c(
-                  "h5",
-                  { staticClass: "font-weight-bold my-4 text-uppercase" },
-                  [_vm._v("Modifier mon compte")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4 mb-4" }, [
-              _c("i", { staticClass: "fab fa-sass fa-3x purple-text" }),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "#" } }, [
-                _c(
-                  "h5",
-                  { staticClass: "font-weight-bold my-4 text-uppercase" },
-                  [_vm._v("Créer un Quiz")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4 mb-4" }, [
-              _c("i", { staticClass: "fas fa-brain fa-3x purple-text" }),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "#" } }, [
-                _c(
-                  "h5",
-                  { staticClass: "font-weight-bold my-4 text-uppercase" },
-                  [_vm._v("Lancer un Quiz")]
-                )
+    return _c("div", { staticClass: "container-fluid mb-5 px-0 z-depth-1" }, [
+      _c(
+        "section",
+        {
+          staticClass: "p-5 text-center",
+          staticStyle: {
+            "background-image":
+              "url(https://mdbootstrap.com/img/Photos/Others/background.jpg)",
+            "background-size": "cover",
+            "background-position": "center center"
+          }
+        },
+        [
+          _c("form", { staticClass: "my-5 mx-md-5", attrs: { action: "" } }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6 mx-auto" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "text-center",
+                        staticStyle: { color: "#757575" },
+                        attrs: { action: "#!" }
+                      },
+                      [
+                        _c(
+                          "h3",
+                          {
+                            staticClass:
+                              "font-weight-bold my-4 pb-2 text-center dark-grey-text"
+                          },
+                          [_vm._v("Création du Quiz")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control mb-4",
+                          attrs: {
+                            type: "text",
+                            id: "defaultSubscriptionFormPassword",
+                            placeholder: "Email"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "password",
+                            id: "defaultSubscriptionFormEmail",
+                            placeholder: "Password"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-center" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn btn-outline-primary btn-rounded my-4 waves-effect",
+                              attrs: { type: "button" }
+                            },
+                            [_vm._v("Créer")]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ])
               ])
             ])
           ])
-        ])
-      ]
-    )
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -53360,6 +53540,8 @@ module.exports = function(module) {
 var map = {
 	"./Account": "./resources/js/Pages/Account.vue",
 	"./Account.vue": "./resources/js/Pages/Account.vue",
+	"./CreateQuiz": "./resources/js/Pages/CreateQuiz.vue",
+	"./CreateQuiz.vue": "./resources/js/Pages/CreateQuiz.vue",
 	"./Home": "./resources/js/Pages/Home.vue",
 	"./Home.vue": "./resources/js/Pages/Home.vue"
 };
@@ -53450,6 +53632,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Account_vue_vue_type_template_id_1b1b0414___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Account_vue_vue_type_template_id_1b1b0414___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/CreateQuiz.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/CreateQuiz.vue ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateQuiz_vue_vue_type_template_id_2c8a3f5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateQuiz.vue?vue&type=template&id=2c8a3f5a& */ "./resources/js/Pages/CreateQuiz.vue?vue&type=template&id=2c8a3f5a&");
+/* harmony import */ var _CreateQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateQuiz.vue?vue&type=script&lang=js& */ "./resources/js/Pages/CreateQuiz.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateQuiz_vue_vue_type_template_id_2c8a3f5a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateQuiz_vue_vue_type_template_id_2c8a3f5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/CreateQuiz.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/CreateQuiz.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/Pages/CreateQuiz.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateQuiz.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/CreateQuiz.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateQuiz_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/CreateQuiz.vue?vue&type=template&id=2c8a3f5a&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/Pages/CreateQuiz.vue?vue&type=template&id=2c8a3f5a& ***!
+  \**************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateQuiz_vue_vue_type_template_id_2c8a3f5a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CreateQuiz.vue?vue&type=template&id=2c8a3f5a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Pages/CreateQuiz.vue?vue&type=template&id=2c8a3f5a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateQuiz_vue_vue_type_template_id_2c8a3f5a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateQuiz_vue_vue_type_template_id_2c8a3f5a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

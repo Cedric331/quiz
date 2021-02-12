@@ -22,6 +22,16 @@ body{
    background: linear-gradient(90deg, rgba(36,0,34,1) 10%, rgba(140,37,168,1) 80%, rgba(239,0,255,1) 95%); 
 }
 
-.purple-text{
-   color:rgb(172, 141, 201);
+.itemAccount{
+   width: 80px;
+   height: 100px;
+   padding:5px;
+   background: rgb(107, 104, 109);
+   transition: transform 1s;
+}
+
+.itemAccount:hover{
+   transition: transform 1s;
+   transition-duration: 1s;
+   background: linear-gradient(rgb(206, 162, 214), rgb(129, 124, 124));
 }
