@@ -6,7 +6,7 @@
 
     <div class="row d-flex justify-content-around ">
 
-   <a :href="createQuiz" class="col-12 col-md-5 mb-4 itemAccount">
+   <a :href="showQuiz" class="col-12 col-md-5 mb-4 itemAccount">
       <div>
         <i class="fab fa-sass fa-3x text-white"></i>
             <h5 class="text-white font-weight-bold my-4 text-uppercase">Créer un Quiz</h5>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  props: ['createQuiz'],
+  props: ['showQuiz'],
   data () {
     return {
     }

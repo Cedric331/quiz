@@ -11,7 +11,7 @@ class UserController extends Controller
    public function index()
    {
       return Inertia::render('Account', [
-         'create-quiz' => URL::route('create-quiz')
+         'show-quiz' => URL::route('show-quiz')
      ]);
    }
 }
