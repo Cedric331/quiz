@@ -15,4 +15,9 @@ class Questionnaire extends Model
       'titre', 'user_id', 'theme_id'
   ];
 
+  public function numberQuestion()
+  {
+     return $this->hasMany(Question::class);
+  }
+
 }

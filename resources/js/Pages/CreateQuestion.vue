@@ -41,6 +41,9 @@
                 </div>
 
               </form>
+               <div class="text-center">
+                  <button v-if="number >= 5" @click="termine()" type="button" class="btn btn-outline-success btn-rounded my-4 ml-2 waves-effect">Terminer</button>
+               </div>
             </div>
           </div>
         </div>
@@ -56,6 +59,28 @@
 <script>
 export default {
   methods: {
+     termine(){
+        if (this.number < 5) {
+               this.$notify({
+                  group: 'success',
+                  type: 'warning',
+                  title: 'Alerte',
+                  speed: 1000,
+                  text: 'Désolé! Vous avez moins de 5 questions!',
+               });
+        } else {
+         axios.post('/create/questions/valide/'+this.id)
+         .then(response => {
+            if (response.status == 200) {
+
+               window.location = "/valide-questionnaire/"+this.id
+            }
+         })
+         .catch(error => {
+
+         });
+        }
+     },
       submit(){
         this.erreurs = {};
         axios.post('/create/questions/'+this.id, {
@@ -68,7 +93,7 @@ export default {
                question.value = "",
                responseValid.value = "",
                responseError.value = "",
-
+               this.number = response.data
                this.$notify({
                   group: 'success',
                   type: 'success',

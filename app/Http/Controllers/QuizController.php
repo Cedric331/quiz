@@ -46,11 +46,11 @@ class QuizController extends Controller
     {
       $questionnaire = Questionnaire::findOrFail($id);
 
-      if (Gate::allows('questionnaire-edit', $questionnaire)) {
+      if (Gate::allows('questionnaire-edit', $questionnaire) && $questionnaire->valide == false) {
 
          return Inertia::render('CreateQuestion', [
             'questionnaire' => $questionnaire,
-            'number' => $questionnaire->nombre_question
+            'number' => $questionnaire->numberQuestion->count()
          ]);
      }
     }
@@ -58,16 +58,39 @@ class QuizController extends Controller
     public function addQuestions(QuestionPost $request, $id)
     {
       $questionnaire = Questionnaire::findOrFail($id);
-      dd($request);
 
-      if (Gate::allows('questionnaire-edit', $questionnaire)) {
+      if (Gate::allows('questionnaire-edit', $questionnaire) && $questionnaire->valide == false) {
             $question = new Question;
             $question->questionnaire_id = $questionnaire->id;
             $question->question = $request->question;
             $question->reponse = $request->responseValid;
             $question->mauvaise_reponse = $request->responseError;
+            $question->save();
 
-         return response()->json($questionnaire->nombre_question, 200);
+         return response()->json($questionnaire->numberQuestion->count(), 200);
      }
+    }
+
+    public function valideQuestions($id)
+    {
+      $questionnaire = Questionnaire::findOrFail($id);
+
+      if (Gate::allows('questionnaire-edit', $questionnaire) && $questionnaire->valide == false) {
+            $questionnaire->valide = true;
+            $questionnaire->save();
+
+         return response()->json(null, 200);
+      }
+    }
+
+    public function MerciQuestionnaire($id)
+    {
+      $questionnaire = Questionnaire::findOrFail($id);
+
+      if (Gate::allows('questionnaire-edit', $questionnaire) && $questionnaire->valide == false) {
+          return Inertia::render('ValideQuestionnaire', [
+             'questionnaire' => $questionnaire
+          ]);
+      }
     }
 }

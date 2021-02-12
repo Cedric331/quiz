@@ -16,7 +16,7 @@ class CreateQuestionnairesTable extends Migration
         Schema::create('questionnaires', function (Blueprint $table) {
             $table->id();
             $table->string('titre');
-            $table->integer('nombre_question')->default(0);
+            $table->boolean('valide')->default(false);
             $table->unsignedBigInteger('theme_id');
             $table->foreign('theme_id')->references('id')->on('themes');
             $table->unsignedBigInteger('user_id');

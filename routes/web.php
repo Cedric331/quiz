@@ -25,6 +25,8 @@ Route::post('/create/quiz', 'QuizController@create')->name('create-quiz')->middl
 Route::get('/create/questions/{id}', 'QuizController@createQuestions')->name('create-questions')->middleware('auth');
 Route::post('/create/questions/{id}', 'QuizController@addQuestions')->name('add-questions')->middleware('auth');
 
+Route::post('/create/questions/valide/{id}', 'QuizController@valideQuestions')->name('valide-questions')->middleware('auth');
 
+Route::get('/valide-questionnaire/{id}', 'QuizController@MerciQuestionnaire')->middleware('auth');
 Auth::routes();
 

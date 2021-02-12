@@ -9,7 +9,7 @@ body{
 
 .btn-purple{
    color:rgb(206, 195, 216);
-   background-color: rgb(179, 112, 179);
+   background-color: rgb(199, 165, 55);
    transition: transform 1s;
 }
 
@@ -19,7 +19,7 @@ body{
    transition-duration: 1s;
    transform: scale(1.2);
    color:rgb(255, 255, 255);
-   background: linear-gradient(90deg, rgba(36,0,34,1) 10%, rgba(140,37,168,1) 80%, rgba(239,0,255,1) 95%); 
+   background: linear-gradient(90deg, rgb(66, 44, 2) 10%, rgb(168, 137, 37) 80%, rgb(231, 122, 32) 95%); 
 }
 
 .itemAccount{
@@ -33,7 +33,7 @@ body{
 .itemAccount:hover{
    transition: transform 1s;
    transition-duration: 1s;
-   background: linear-gradient(rgb(206, 162, 214), rgb(129, 124, 124));
+   background: linear-gradient(rgb(202, 152, 76), rgb(168, 107, 27));
 }
 
 

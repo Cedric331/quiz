@@ -1,5 +1,5 @@
 #Account{
-   background-image: url("../storage/background/account.jpg");
+   background-image: url('https://mdbootstrap.com/img/Photos/Others/background.jpg');
    background-size: cover;
    background-position: center;
    background-attachment: fixed;
