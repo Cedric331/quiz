@@ -12,23 +12,32 @@
             <div class="card-body">
 
               <form class="text-center" style="color: #757575;" @submit.prevent="submit">
-                <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Création des questions pour le questionnaire</h3>
+                <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Création des questions pour "{{questionnaire.titre}}"</h3>
+               <p class="text-muted">Il faut au moins 5 questions pour valider le questionnaire</p>
+            <div>
 
-            <div id="myQuestion">
                <div class="form-floating">
                  <input type="text" class="form-control" id="question" :v-model="question" value="" placeholder="question">
-                 <label for="question">Question </label>
+                 <label for="question">Question</label>
                  <div v-if="erreurs && erreurs.question" class="text-danger">{{ erreurs.question[0] }}</div>
                </div>
-               <div class="form-floating">
-                 <input type="text" class="form-control" id="response" :v-model="response" value="" placeholder="Réponse">
-                 <label for="response">Réponse </label>
+
+               <div class="form-floating my-2">
+                 <input type="text" class="form-control" id="response" :v-model="response" value="" placeholder="Indiquer la bonne réponse">
+                 <label for="response">Bonne réponse pour la question</label>
                  <div v-if="erreurs && erreurs.response" class="text-danger">{{ erreurs.response[0] }}</div>
                </div>
+
+               <div class="form-floating">
+                 <input type="text" class="form-control" id="responseError" :v-model="response" value="" placeholder="Indiquer la mauvaise réponse">
+                 <label for="responseError">Mauvaise réponse pour la question</label>
+                 <div v-if="erreurs && erreurs.responseError" class="text-danger">{{ erreurs.responseError[0] }}</div>
+               </div>
+
             </div>
             
                 <div class="text-center">
-                  <button type="submit" class="btn btn-outline-primary btn-rounded my-4 waves-effect">Terminé</button>
+                  <button type="submit" class="btn btn-outline-primary btn-rounded my-4 waves-effect">Continuer</button>
                 </div>
 
               </form>
@@ -46,5 +55,13 @@
 
 <script>
 export default {
+  props: ['questionnaire'],
+  data () {
+    return {
+       erreurs: {},
+       question: '',
+       response: '',
+    }
+  },
 }
 </script>

@@ -45,9 +45,10 @@ class QuizController extends Controller
       $questionnaire = Questionnaire::findOrFail($id);
 
       if (Gate::allows('questionnaire-edit', $questionnaire)) {
-         
-         return Inertia::render('CreateQuestion');
+
+         return Inertia::render('CreateQuestion', [
+            'questionnaire' => $questionnaire
+         ]);
      }
-      
     }
 }

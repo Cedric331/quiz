@@ -4932,7 +4932,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['questionnaire'],
+  data: function data() {
+    return {
+      erreurs: {},
+      question: '',
+      response: ''
+    };
+  }
+});
 
 /***/ }),
 
@@ -41310,10 +41328,22 @@ var render = function() {
                           staticClass:
                             "font-weight-bold my-4 pb-2 text-center dark-grey-text"
                         },
-                        [_vm._v("Création des questions pour le questionnaire")]
+                        [
+                          _vm._v(
+                            'Création des questions pour "' +
+                              _vm._s(_vm.questionnaire.titre) +
+                              '"'
+                          )
+                        ]
                       ),
                       _vm._v(" "),
-                      _c("div", { attrs: { id: "myQuestion" } }, [
+                      _c("p", { staticClass: "text-muted" }, [
+                        _vm._v(
+                          "Il faut au moins 5 questions pour valider le questionnaire"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
                         _c("div", { staticClass: "form-floating" }, [
                           _c("input", {
                             staticClass: "form-control",
@@ -41327,7 +41357,7 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("label", { attrs: { for: "question" } }, [
-                            _vm._v("Question ")
+                            _vm._v("Question")
                           ]),
                           _vm._v(" "),
                           _vm.erreurs && _vm.erreurs.question
@@ -41337,7 +41367,7 @@ var render = function() {
                             : _vm._e()
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-floating" }, [
+                        _c("div", { staticClass: "form-floating my-2" }, [
                           _c("input", {
                             staticClass: "form-control",
                             attrs: {
@@ -41345,17 +41375,40 @@ var render = function() {
                               id: "response",
                               "v-model": _vm.response,
                               value: "",
-                              placeholder: "Réponse"
+                              placeholder: "Indiquer la bonne réponse"
                             }
                           }),
                           _vm._v(" "),
                           _c("label", { attrs: { for: "response" } }, [
-                            _vm._v("Réponse ")
+                            _vm._v("Bonne réponse pour la question")
                           ]),
                           _vm._v(" "),
                           _vm.erreurs && _vm.erreurs.response
                             ? _c("div", { staticClass: "text-danger" }, [
                                 _vm._v(_vm._s(_vm.erreurs.response[0]))
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-floating" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              id: "responseError",
+                              "v-model": _vm.response,
+                              value: "",
+                              placeholder: "Indiquer la mauvaise réponse"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("label", { attrs: { for: "responseError" } }, [
+                            _vm._v("Mauvaise réponse pour la question")
+                          ]),
+                          _vm._v(" "),
+                          _vm.erreurs && _vm.erreurs.responseError
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.erreurs.responseError[0]))
                               ])
                             : _vm._e()
                         ])
@@ -41385,7 +41438,7 @@ var staticRenderFns = [
           staticClass: "btn btn-outline-primary btn-rounded my-4 waves-effect",
           attrs: { type: "submit" }
         },
-        [_vm._v("Terminé")]
+        [_vm._v("Continuer")]
       )
     ])
   }
