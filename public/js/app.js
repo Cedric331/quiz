@@ -4869,7 +4869,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['showQuiz'],
+  props: ['showQuiz', 'quiz'],
   data: function data() {
     return {};
   }
@@ -5199,11 +5199,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     submit: function submit() {
       var _this = this;
 
+      this.value = theme.value;
       axios.get('/quiz/reset').then(function (response) {
         if (response.status == 200) {
           _this.quizz = response.data;
@@ -5222,6 +5224,7 @@ __webpack_require__.r(__webpack_exports__);
     reset: function reset() {
       var _this2 = this;
 
+      this.value = '';
       axios.get('/quiz/reset').then(function (response) {
         if (response.status == 200) {
           _this2.quizz = response.data;
@@ -5232,11 +5235,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       erreurs: {},
+      'value': '',
       array: '',
       quizz: this.questionnaires
     };
   },
-  props: ['themes', 'questionnaires']
+  props: ['themes', 'questionnaires', 'url']
 });
 
 /***/ }),
@@ -41389,7 +41393,14 @@ var render = function() {
             [_vm._m(0)]
           ),
           _vm._v(" "),
-          _vm._m(1),
+          _c(
+            "a",
+            {
+              staticClass: "col-12 col-md-5 mb-4 itemAccount",
+              attrs: { href: _vm.quiz }
+            },
+            [_vm._m(1)]
+          ),
           _vm._v(" "),
           _vm._m(2)
         ])
@@ -41416,21 +41427,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "col-12 col-md-5 mb-4 itemAccount", attrs: { href: "#" } },
-      [
-        _c("div", [
-          _c("i", { staticClass: "fas fa-brain fa-3x text-white" }),
-          _vm._v(" "),
-          _c(
-            "h5",
-            { staticClass: "text-white font-weight-bold my-4 text-uppercase" },
-            [_vm._v("Lancer un Quiz")]
-          )
-        ])
-      ]
-    )
+    return _c("div", [
+      _c("i", { staticClass: "fas fa-brain fa-3x text-white" }),
+      _vm._v(" "),
+      _c(
+        "h5",
+        { staticClass: "text-white font-weight-bold my-4 text-uppercase" },
+        [_vm._v("Lancer un Quiz")]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -41971,77 +41976,59 @@ var render = function() {
     },
     [
       _c(
-        "form",
+        "h3",
         {
-          staticClass: "text-center container p-2",
-          staticStyle: { color: "#757575" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.submit($event)
-            }
-          }
+          staticClass: "font-weight-bold mb-4 pb-2 text-center dark-grey-text"
         },
-        [
-          _c(
-            "h3",
-            {
-              staticClass:
-                "font-weight-bold mb-4 pb-2 text-center dark-grey-text"
-            },
-            [_vm._v("Thème du Quiz")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-floating" }, [
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                attrs: { id: "theme", "aria-label": "Theme du questionnaire" }
-              },
-              [
-                _c("option", { attrs: { disabled: "", selected: "" } }, [
-                  _vm._v("Choisir un thème")
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.themes, function(theme) {
-                  return _c(
-                    "option",
-                    {
-                      key: theme.id,
-                      attrs: { "v-model": theme },
-                      domProps: { value: theme.titre }
-                    },
-                    [_vm._v(_vm._s(theme.titre))]
-                  )
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "theme" } }, [
-              _vm._v("Thème du questionnaire")
+        [_vm._v("Thème du Quiz")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-floating container p-2" }, [
+        _c(
+          "select",
+          {
+            staticClass: "form-select",
+            attrs: { id: "theme", "aria-label": "Theme du questionnaire" }
+          },
+          [
+            _c("option", { attrs: { disabled: "", selected: "" } }, [
+              _vm._v("Choisir un thème")
             ]),
             _vm._v(" "),
-            _vm.erreurs && _vm.erreurs.theme
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.erreurs.theme[0]))
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "text-center" }, [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "btn btn-outline-success btn-rounded my-4 waves-effect",
-                attrs: { type: "submit" }
-              },
-              [_vm._v("Valider")]
-            ),
-            _vm._v(" "),
-            _c(
+            _vm._l(_vm.themes, function(theme) {
+              return _c(
+                "option",
+                {
+                  key: theme.id,
+                  attrs: { "v-model": theme },
+                  domProps: { value: theme.titre },
+                  on: {
+                    click: function($event) {
+                      return _vm.submit()
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(theme.titre))]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "theme" } }, [
+          _vm._v("Thème du questionnaire")
+        ]),
+        _vm._v(" "),
+        _vm.erreurs && _vm.erreurs.theme
+          ? _c("div", { staticClass: "text-danger" }, [
+              _vm._v(_vm._s(_vm.erreurs.theme[0]))
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-center" }, [
+        _vm.value != ""
+          ? _c(
               "button",
               {
                 staticClass:
@@ -42053,11 +42040,10 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Reset")]
+              [_vm._v("Voir tout les quiz")]
             )
-          ])
-        ]
-      ),
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
@@ -42066,7 +42052,12 @@ var render = function() {
         { staticClass: "dark-grey-text text-center container my-2" },
         [
           _c("h3", { staticClass: "text-center font-weight-bold mb-4 pb-2" }, [
-            _vm._v("Nos Quiz")
+            _vm._v("Nos Quiz "),
+            _vm.value
+              ? _c("p", { staticClass: "d-inline" }, [
+                  _vm._v("sur le thème " + _vm._s(_vm.value))
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("p", {
@@ -42076,58 +42067,89 @@ var render = function() {
           _c(
             "div",
             { staticClass: "row" },
-            _vm._l(_vm.quizz, function(quiz) {
-              return _c("div", { key: quiz.id, staticClass: "col-md-4 mb-4" }, [
-                _c(
+            [
+              _vm.quizz.length == 0
+                ? _c("div", [
+                    _c("h2", [
+                      _vm._v(
+                        "Oups! Nous n'avons pas de quiz avec ce thème, vous pouvez "
+                      ),
+                      _c("a", { attrs: { href: _vm.url } }, [
+                        _vm._v("créer un quiz")
+                      ]),
+                      _vm._v(" si vous le voulez")
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.quizz, function(quiz) {
+                return _c(
                   "div",
-                  {
-                    staticClass: "card card-image",
-                    staticStyle: {
-                      "background-image":
-                        "url(https://mdbootstrap.com/img/Photos/Others/background.jpg)"
-                    }
-                  },
+                  { key: quiz.id, staticClass: "col-md-4 mb-4" },
                   [
                     _c(
                       "div",
                       {
-                        staticClass:
-                          "text-white d-flex align-items-center py-5 px-4 px-md-5 m-auto"
+                        staticClass: "card card-image",
+                        staticStyle: {
+                          "background-image":
+                            "url(https://mdbootstrap.com/img/Photos/Others/background.jpg)"
+                        }
                       },
                       [
-                        _c("div", [
-                          _c("h3", { staticClass: "py-3 font-weight-bold" }, [
-                            _c("strong", [
-                              _vm._v("Titre : " + _vm._s(quiz.titre))
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "text-white d-flex align-items-center py-5 px-4 px-md-5 m-auto"
+                          },
+                          [
+                            _c("div", [
+                              _c(
+                                "h3",
+                                { staticClass: "py-3 font-weight-bold" },
+                                [
+                                  _c("strong", [
+                                    _vm._v("Titre : " + _vm._s(quiz.titre))
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "h4",
+                                { staticClass: "py-3 font-weight-bold" },
+                                [
+                                  _c("strong", [
+                                    _vm._v("Thème : " + _vm._s(quiz.theme))
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("p", [
+                                _vm._v(
+                                  "Nombre de question: " + _vm._s(quiz.number)
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-light btn-rounded btn-md",
+                                  attrs: { type: "button" }
+                                },
+                                [_vm._v("Faire ce Quiz")]
+                              )
                             ])
-                          ]),
-                          _vm._v(" "),
-                          _c("h4", { staticClass: "py-3 font-weight-bold" }, [
-                            _c("strong", [
-                              _vm._v("Thème : " + _vm._s(quiz.theme))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v("Nombre de question: " + _vm._s(quiz.number))
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-light btn-rounded btn-md",
-                              attrs: { type: "button" }
-                            },
-                            [_vm._v("Faire ce Quiz")]
-                          )
-                        ])
+                          ]
+                        )
                       ]
                     )
                   ]
                 )
-              ])
-            }),
-            0
+              })
+            ],
+            2
           )
         ]
       )

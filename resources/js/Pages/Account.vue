@@ -13,7 +13,7 @@
       </div>
    </a>
 
-   <a href="#" class="col-12 col-md-5 mb-4 itemAccount">
+   <a :href="quiz" class="col-12 col-md-5 mb-4 itemAccount">
       <div>
         <i class="fas fa-brain fa-3x text-white"></i>
             <h5 class="text-white font-weight-bold my-4 text-uppercase">Lancer un Quiz</h5>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  props: ['showQuiz'],
+  props: ['showQuiz', 'quiz'],
   data () {
     return {
     }

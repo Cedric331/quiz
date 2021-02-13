@@ -6,6 +6,7 @@ use App\Theme;
 use Inertia\Inertia;
 use App\Questionnaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class GameController extends Controller
 {
@@ -24,7 +25,8 @@ class GameController extends Controller
 
        return Inertia::render('IndexQuiz', [
          'themes' => $themes,
-         'questionnaires' => $questionnaires
+         'questionnaires' => $questionnaires,
+         'url' => URL::route('show-quiz'),
      ]);
     }
 
