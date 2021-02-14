@@ -4957,12 +4957,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
-    deleteQuiz: function deleteQuiz(id) {
+    deleteQuiz: function deleteQuiz(id, count) {
       var _this = this;
 
+      this.nbQuizFinish = this.nbQuizFinish - count;
+      this.nbQuiz--;
       axios["delete"]('/quiz/delete/' + id).then(function (res) {
-        console.log(res.data);
-
         if (res.status == 200) {
           _this.$notify({
             group: 'success',
@@ -4971,6 +4971,8 @@ __webpack_require__.r(__webpack_exports__);
             speed: 1000,
             text: 'Quiz supprimé!'
           });
+
+          _this.quizz = res.data;
         }
       })["catch"](function (err) {
         if (err.response.status == 401) {
@@ -4987,7 +4989,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      quiz: this.questionnaires,
+      quizz: this.questionnaires,
       nbQuiz: 0,
       nbQuizFinish: 0
     };
@@ -41932,7 +41934,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("p", { staticClass: "font-weight-normal text-muted" }, [
                   _vm._v(
-                    "Nombre de fois où les autres utilisateurs ont utilisés vos quiz"
+                    "Nombre de fois où les utilisateurs ont utilisés vos quiz"
                   )
                 ])
               ])
@@ -41952,11 +41954,11 @@ var render = function() {
                   _c(
                     "ul",
                     { staticClass: "list-unstyled mb-0" },
-                    _vm._l(_vm.questionnaires, function(questionnaire) {
+                    _vm._l(_vm.quizz, function(quiz) {
                       return _c(
                         "li",
                         {
-                          key: questionnaire.id,
+                          key: quiz.id,
                           staticClass:
                             "d-flex justify-content-between align-items-center py-2 border-bottom"
                         },
@@ -41964,7 +41966,7 @@ var render = function() {
                           _c("div", { staticClass: "d-inline-flex" }, [
                             _c("p", { staticClass: "mb-0" }, [
                               _c("span", { staticClass: "text" }, [
-                                _vm._v(_vm._s(questionnaire.titre))
+                                _vm._v(_vm._s(quiz.titre))
                               ])
                             ])
                           ]),
@@ -41976,7 +41978,7 @@ var render = function() {
                                 attrs: { href: "#" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.deleteQuiz(questionnaire.id)
+                                    return _vm.deleteQuiz(quiz.id, quiz.counter)
                                   }
                                 }
                               },

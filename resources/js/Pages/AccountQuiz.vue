@@ -19,7 +19,7 @@
                 <i class="fas fa-layer-group indigo-text"></i>
                 <span class="d-inline-block count1" data-from="0" data-to="250" data-time="2000">{{nbQuizFinish}}</span>
               </h4>
-              <p class="font-weight-normal text-muted">Nombre de fois où les autres utilisateurs ont utilisés vos quiz</p>
+              <p class="font-weight-normal text-muted">Nombre de fois où les utilisateurs ont utilisés vos quiz</p>
             </div>
 
           </div>
@@ -41,12 +41,12 @@
           </div>
           <div class="card-body">
             <ul class="list-unstyled mb-0">
-              <li v-for="questionnaire in questionnaires" :key="questionnaire.id" class="d-flex justify-content-between align-items-center py-2 border-bottom">
+              <li v-for="quiz in quizz" :key="quiz.id" class="d-flex justify-content-between align-items-center py-2 border-bottom">
                 <div class="d-inline-flex">
-                  <p class="mb-0"><span class="text">{{questionnaire.titre}}</span></p>
+                  <p class="mb-0"><span class="text">{{quiz.titre}}</span></p>
                 </div>
                 <div class="tools">
-                  <a href="#" @click="deleteQuiz(questionnaire.id)"><i class="far fa-trash-alt fa-1x"></i></a>
+                  <a href="#" @click="deleteQuiz(quiz.id, quiz.counter)"><i class="far fa-trash-alt fa-1x"></i></a>
                 </div>
               </li>
             </ul>
@@ -66,9 +66,10 @@
 <script>
 export default {
   methods: {
-     deleteQuiz(id){
+     deleteQuiz(id, count){
+        this.nbQuizFinish = this.nbQuizFinish - count
+        this.nbQuiz--
         axios.delete('/quiz/delete/'+id).then(res => {
-           console.log(res.data)
            if (res.status == 200) {
                this.$notify({
                   group: 'success',
@@ -77,6 +78,8 @@ export default {
                   speed: 1000,
                   text: 'Quiz supprimé!',
                });
+
+            this.quizz = res.data
            }
         }).catch(err => {
              if (err.response.status == 401) {
@@ -93,7 +96,7 @@ export default {
   },
   data () {
     return {
-       quiz: this.questionnaires,
+       quizz: this.questionnaires,
        nbQuiz: 0,
        nbQuizFinish: 0,
     }

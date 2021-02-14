@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Gate;
 
 class GameController extends Controller
 {
+   /**
+    * Affiche la page avec les quiz qui sont disponibles
+    *
+    * @return void
+    */
     public function index()
     {
       $themes = Theme::all();
@@ -33,6 +38,11 @@ class GameController extends Controller
      ]);
     }
 
+    /**
+     * Permet de réactualiser les informations de la page
+     *
+     * @return void
+     */
     public function questionnaires()
     {
           $questionnaires = Questionnaire::where('valide', true)
@@ -46,6 +56,12 @@ class GameController extends Controller
          return response()->json($questionnaires, 200);
     }
 
+    /**
+     * Affiche la vue pour jouer à un quiz
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function quiz($id)
     {
       $questionnaire = Questionnaire::findOrFail($id);
@@ -66,6 +82,12 @@ class GameController extends Controller
       
     } 
 
+    /**
+     * Augmente le compteur du quiz
+     *
+     * @param Request $request
+     * @return void
+     */
     public function compteur(Request $request)
     {
       $request->validate([
@@ -83,14 +105,22 @@ class GameController extends Controller
       return response()->json(null, 200);
     }
 
-    public function deleteQuiz(Questionnaire $id)
+    /**
+     * Permet de supprimer un quiz
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function deleteQuiz($id)
     {
       $questionnaire = Questionnaire::findOrFail($id);
 
       if (Gate::allows('questionnaire-edit', $questionnaire)) {
 
         $questionnaire->delete();
-        return response()->json('Quiz supprimé', 200);
+
+        $questionnaires = Questionnaire::where('user_id', Auth::user()->id)->get();
+        return response()->json($questionnaires, 200);
       }
       else {
          return response()->json('Action non autorisée', 401);
