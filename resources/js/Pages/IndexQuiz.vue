@@ -1,7 +1,7 @@
 <template>
 <div style="background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient2.png'); background-repeat: no-repeat; background-size: cover; min-height:100vh;">
 
-        <h3 class="font-weight-bold mb-4 pb-2 text-center dark-grey-text">Thème du Quiz</h3>
+        <h3 class="font-weight-bold mb-4 pb-2 text-center dark-grey-text mt-2">Thème du Quiz</h3>
 
        <div class="form-floating container p-2">
          <select class="form-select" id="theme" aria-label="Theme du questionnaire">
@@ -33,7 +33,7 @@
           <div class="text-white d-flex align-items-center py-5 px-4 px-md-5 m-auto">
             <div>
               <h3 class="py-3 font-weight-bold">
-                <strong>Titre : {{quiz.titre}}</strong>
+                <strong>{{quiz.titre}}</strong>
               </h3>
               <h4 class="py-3 font-weight-bold">
                 <strong>Thème : {{quiz.theme}}</strong>

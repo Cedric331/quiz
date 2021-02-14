@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Questionnaire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -63,4 +64,21 @@ class GameController extends Controller
      ]);
       
     } 
+
+    public function compteur(Request $request)
+    {
+      $request->validate([
+         'id' => 'required'
+      ]);
+
+      if ($request->id == Auth::user()->id) {
+         return response()->json(null, 201);
+      }
+
+      $questionnaire = Questionnaire::findOrFail($request->id);
+      $questionnaire->counter = $questionnaire->counter + 1;
+      $questionnaire->save();
+
+      return response()->json(null, 200);
+    }
 }

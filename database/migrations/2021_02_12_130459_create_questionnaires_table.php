@@ -17,6 +17,7 @@ class CreateQuestionnairesTable extends Migration
             $table->id();
             $table->string('titre');
             $table->boolean('valide')->default(false);
+            $table->integer('counter')->default(0);
             $table->unsignedBigInteger('theme_id');
             $table->foreign('theme_id')->references('id')->on('themes')->cascadeOnDelete();
             $table->unsignedBigInteger('user_id');

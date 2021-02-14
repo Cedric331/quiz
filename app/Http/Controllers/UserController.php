@@ -17,8 +17,23 @@ class UserController extends Controller
       return Inertia::render('Account', [
          'show-quiz' => URL::route('show-quiz'),
          'quiz' => URL::route('quiz-index'),
-         'information' => URL::route('user-information')
+         'information' => URL::route('user-information'),
+         'myQuiz' => URL::route('account-quiz')
      ]);
+   }
+
+   public function accountQuiz()
+   {
+      $questionnaires = Questionnaire::where('user_id', Auth::user()->id)->get();
+      $counter = 0;
+      foreach ($questionnaires as $questionnaire) {
+         $counter += $questionnaire->counter;
+      }
+
+      return Inertia::render('AccountQuiz', [
+         'questionnaires' => $questionnaires,
+         'counter' => $counter,
+      ]);
    }
 
    public function information()
@@ -55,6 +70,10 @@ class UserController extends Controller
 
    public function delete(Request $request)
    {
+      $request->validate([
+         'id' => 'required'
+      ]);
+      
       $user = User::find($request->id);
       $user->delete();
    }

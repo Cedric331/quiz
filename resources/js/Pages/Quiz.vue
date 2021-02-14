@@ -1,6 +1,6 @@
 <template>
    <div style="background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient2.png'); background-repeat: no-repeat; background-size: cover; min-height:100vh;">
-    
+    <notifications group="success" position="bottom right" />
     <section class="px-md-5 mt-5 p-2 mx-md-5 text-center dark-grey-text" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/background.jpg); background-size: cover; background-position: center center;">
       <h3 class="font-weight-bold mb-5">{{questions[counter].question}}</h3>
 
@@ -55,6 +55,30 @@ export default {
            document.querySelector('#question').classList.add('visually-hidden')
            document.querySelector('#suivante').classList.add('visually-hidden')
            document.querySelector('#home').classList.remove('visually-hidden')
+
+           axios.post('/quiz/compteur', {
+              'id': this.questionnaire.id
+           }).then( res => {
+            if (res.status == 200) {
+              this.$notify({
+                  group: 'success',
+                  type: 'success',
+                  title: 'Félicitation',
+                  speed: 1000,
+                  text: 'Quiz terminé!',
+               });
+            }
+           if (res.status == 201) {
+              this.$notify({
+                  group: 'success',
+                  type: 'info',
+                  title: 'Félicitation',
+                  speed: 1000,
+                  text: 'Quiz terminé même si c\'est le vôtre! :)',
+               });
+            }
+            }).catch( err => {
+           });
         } 
         else {
         this.counter++

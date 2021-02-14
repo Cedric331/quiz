@@ -20,7 +20,14 @@
       </div>
    </a>
 
-      <a :href="information" class="col-12 col-md-6 itemAccount">
+   <a :href="myQuiz" class="col-12 col-md-5 mb-4 itemAccount">
+      <div>
+        <i class="fas fa-clipboard fa-3x text-white"></i>
+            <h5 class="text-white font-weight-bold my-4 text-uppercase">Mes Quiz</h5>
+      </div>
+   </a>
+
+      <a :href="information" class="col-12 col-md-5 itemAccount">
       <div>
          <i class="fas fa-users fa-3x text-white"></i>
             <h5 class="text-white font-weight-bold my-4 text-uppercase">Modifier mon compte</h5>
@@ -36,7 +43,7 @@
 
 <script>
 export default {
-  props: ['showQuiz', 'quiz', 'information'],
+  props: ['showQuiz', 'quiz', 'information', 'myQuiz'],
     
 }
 </script>
