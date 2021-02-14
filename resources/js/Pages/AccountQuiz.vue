@@ -1,5 +1,6 @@
 <template>
    <div>
+      <notifications group="success" position="bottom right" />
       <div class="container my-5">
         <section class="p-5 z-depth-1">
 
@@ -22,15 +23,74 @@
             </div>
 
           </div>
-
         </section>
       </div>
+
+      <div class="container my-5">
+
+  
+  <!-- Section: Block Content -->
+  <section>
+    
+    <div class="row">
+      <div class="col-8 m-auto">
+      	<div class="card card-list">
+          <div class="card-header white d-flex justify-content-between align-items-center py-3">
+            <p class="h5-responsive font-weight-bold mb-0"><i class="fas fa-clipboard-list pr-2"></i>Mes Quiz</p>
+          
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mb-0">
+              <li v-for="questionnaire in questionnaires" :key="questionnaire.id" class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                <div class="d-inline-flex">
+                  <p class="mb-0"><span class="text">{{questionnaire.titre}}</span></p>
+                </div>
+                <div class="tools">
+                  <a href="#" @click="deleteQuiz(questionnaire.id)"><i class="far fa-trash-alt fa-1x"></i></a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+      </div>
+
    </div>
 </template>
 
 
 <script>
 export default {
+  methods: {
+     deleteQuiz(id){
+        axios.delete('/quiz/delete/'+id).then(res => {
+           console.log(res.data)
+           if (res.status == 200) {
+               this.$notify({
+                  group: 'success',
+                  type: 'success',
+                  title: 'Succès',
+                  speed: 1000,
+                  text: 'Quiz supprimé!',
+               });
+           }
+        }).catch(err => {
+             if (err.response.status == 401) {
+               this.$notify({
+                  group: 'success',
+                  type: 'success',
+                  title: 'Warning',
+                  speed: 1000,
+                  text: 'Action non autorisée!',
+               });
+           }
+        })
+     }
+  },
   data () {
     return {
        quiz: this.questionnaires,

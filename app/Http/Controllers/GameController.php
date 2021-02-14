@@ -81,4 +81,18 @@ class GameController extends Controller
 
       return response()->json(null, 200);
     }
+
+    public function deleteQuiz($id)
+    {
+      $questionnaire = Questionnaire::findOrFail($id);
+
+      if ($id == Auth::user()->id) {
+        $questionnaire->delete();
+
+        return response()->json(null, 200);
+      }
+      else {
+         return response()->json('Action non autorisée', 401);
+      }
+    }
 }

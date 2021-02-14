@@ -33,6 +33,7 @@ Route::post('/create/questions/valide/{id}', 'QuizController@valideQuestions')->
 Route::get('/valide-questionnaire/{id}', 'QuizController@MerciQuestionnaire')->middleware('auth');
 
 Route::post('/quiz/compteur', 'GameController@compteur')->middleware('auth');
+Route::delete('/quiz/delete/{id}', 'GameController@deleteQuiz')->middleware('auth');
 Route::get('/account', 'UserController@index')->name('account')->middleware('auth');
 Route::get('/account/mes-quiz', 'UserController@accountQuiz')->name('account-quiz')->middleware('auth');
 Route::get('/account/information', 'UserController@information')->name('user-information')->middleware('auth');

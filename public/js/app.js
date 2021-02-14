@@ -4921,7 +4921,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    deleteQuiz: function deleteQuiz(id) {
+      var _this = this;
+
+      axios["delete"]('/quiz/delete/' + id).then(function (res) {
+        console.log(res.data);
+
+        if (res.status == 200) {
+          _this.$notify({
+            group: 'success',
+            type: 'success',
+            title: 'Succès',
+            speed: 1000,
+            text: 'Quiz supprimé!'
+          });
+        }
+      })["catch"](function (err) {
+        if (err.response.status == 401) {
+          _this.$notify({
+            group: 'success',
+            type: 'success',
+            title: 'Warning',
+            speed: 1000,
+            text: 'Action non autorisée!'
+          });
+        }
+      });
+    }
+  },
   data: function data() {
     return {
       quiz: this.questionnaires,
@@ -41809,71 +41872,156 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container my-5" }, [
-      _c("section", { staticClass: "p-5 z-depth-1" }, [
-        _c(
-          "div",
-          { staticClass: "row d-flex justify-content-center bg-white p-2" },
-          [
-            _c("h3", { staticClass: "text-center font-weight-bold mb-5" }, [
-              _vm._v("Compteur")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 col-lg-3 mb-4 text-center" }, [
-              _c("h4", { staticClass: "h1 font-weight-normal mb-3" }, [
-                _c("i", { staticClass: "fas fa-file-alt indigo-text" }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass: "d-inline-block count-up",
-                    attrs: {
-                      "data-from": "0",
-                      "data-to": "100",
-                      "data-time": "2000"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.nbQuiz))]
-                )
+  return _c(
+    "div",
+    [
+      _c("notifications", {
+        attrs: { group: "success", position: "bottom right" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "container my-5" }, [
+        _c("section", { staticClass: "p-5 z-depth-1" }, [
+          _c(
+            "div",
+            { staticClass: "row d-flex justify-content-center bg-white p-2" },
+            [
+              _c("h3", { staticClass: "text-center font-weight-bold mb-5" }, [
+                _vm._v("Compteur")
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "font-weight-normal text-muted" }, [
-                _vm._v("Nombre de quiz que vous avez crée")
+              _c("div", { staticClass: "col-md-6 col-lg-3 mb-4 text-center" }, [
+                _c("h4", { staticClass: "h1 font-weight-normal mb-3" }, [
+                  _c("i", { staticClass: "fas fa-file-alt indigo-text" }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "d-inline-block count-up",
+                      attrs: {
+                        "data-from": "0",
+                        "data-to": "100",
+                        "data-time": "2000"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.nbQuiz))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "font-weight-normal text-muted" }, [
+                  _vm._v("Nombre de quiz que vous avez crée")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6 col-lg-3 mb-4 text-center" }, [
+                _c("h4", { staticClass: "h1 font-weight-normal mb-3" }, [
+                  _c("i", { staticClass: "fas fa-layer-group indigo-text" }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "d-inline-block count1",
+                      attrs: {
+                        "data-from": "0",
+                        "data-to": "250",
+                        "data-time": "2000"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.nbQuizFinish))]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "font-weight-normal text-muted" }, [
+                  _vm._v(
+                    "Nombre de fois où les autres utilisateurs ont utilisés vos quiz"
+                  )
+                ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6 col-lg-3 mb-4 text-center" }, [
-              _c("h4", { staticClass: "h1 font-weight-normal mb-3" }, [
-                _c("i", { staticClass: "fas fa-layer-group indigo-text" }),
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container my-5" }, [
+        _c("section", [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-8 m-auto" }, [
+              _c("div", { staticClass: "card card-list" }, [
+                _vm._m(0),
                 _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass: "d-inline-block count1",
-                    attrs: {
-                      "data-from": "0",
-                      "data-to": "250",
-                      "data-time": "2000"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.nbQuizFinish))]
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "font-weight-normal text-muted" }, [
-                _vm._v(
-                  "Nombre de fois où les autres utilisateurs ont utilisés vos quiz"
-                )
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "ul",
+                    { staticClass: "list-unstyled mb-0" },
+                    _vm._l(_vm.questionnaires, function(questionnaire) {
+                      return _c(
+                        "li",
+                        {
+                          key: questionnaire.id,
+                          staticClass:
+                            "d-flex justify-content-between align-items-center py-2 border-bottom"
+                        },
+                        [
+                          _c("div", { staticClass: "d-inline-flex" }, [
+                            _c("p", { staticClass: "mb-0" }, [
+                              _c("span", { staticClass: "text" }, [
+                                _vm._v(_vm._s(questionnaire.titre))
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "tools" }, [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteQuiz(questionnaire.id)
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "far fa-trash-alt fa-1x"
+                                })
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
               ])
             ])
-          ]
-        )
+          ])
+        ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "card-header white d-flex justify-content-between align-items-center py-3"
+      },
+      [
+        _c("p", { staticClass: "h5-responsive font-weight-bold mb-0" }, [
+          _c("i", { staticClass: "fas fa-clipboard-list pr-2" }),
+          _vm._v("Mes Quiz")
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
