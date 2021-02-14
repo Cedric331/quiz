@@ -20,7 +20,7 @@
       </div>
    </a>
 
-      <a href="#" class="col-12 col-md-6 itemAccount">
+      <a :href="information" class="col-12 col-md-6 itemAccount">
       <div>
          <i class="fas fa-users fa-3x text-white"></i>
             <h5 class="text-white font-weight-bold my-4 text-uppercase">Modifier mon compte</h5>
@@ -36,11 +36,7 @@
 
 <script>
 export default {
-  props: ['showQuiz', 'quiz'],
-  data () {
-    return {
-    }
-  },
+  props: ['showQuiz', 'quiz', 'information'],
     
 }
 </script>

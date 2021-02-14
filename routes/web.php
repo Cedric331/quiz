@@ -34,6 +34,8 @@ Route::post('/create/questions/valide/{id}', 'QuizController@valideQuestions')->
 
 Route::get('/valide-questionnaire/{id}', 'QuizController@MerciQuestionnaire')->middleware('auth');
 
-
+Route::get('/account/information', 'UserController@information')->name('user-information')->middleware('auth');
+Route::post('/account/information/update', 'UserController@update')->middleware('auth');
+Route::post('/account/delete', 'UserController@delete')->name('user-delete')->middleware('auth');
 Auth::routes();
 

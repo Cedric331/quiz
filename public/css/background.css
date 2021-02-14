@@ -4,3 +4,10 @@
    background-position: center;
    background-attachment: fixed;
 }
+
+#Information{
+   background-image: url('https://mdbootstrap.com/img/Photos/Others/background.jpg');
+   background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
+}

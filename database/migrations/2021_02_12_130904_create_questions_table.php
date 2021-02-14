@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('reponse');
             $table->string('mauvaise_reponse');
             $table->unsignedBigInteger('questionnaire_id');
-            $table->foreign('questionnaire_id')->references('id')->on('questionnaires');
+            $table->foreign('questionnaire_id')->references('id')->on('questionnaires')->cascadeOnDelete();
             $table->timestamps();
         });
     }
