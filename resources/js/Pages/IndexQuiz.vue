@@ -39,7 +39,7 @@
                 <strong>Thème : {{quiz.theme}}</strong>
               </h4>
               <p>Nombre de question: {{quiz.number}}</p>
-              <button type="button" class="btn btn-light btn-rounded btn-md">Faire ce Quiz</button>
+              <button type="button" @click="startQuiz(quiz.id)" class="btn btn-light btn-rounded btn-md">Faire ce Quiz</button>
             </div>
           </div>
         </div>
@@ -54,6 +54,9 @@
 <script>
 export default {
   methods: {
+      startQuiz(id){
+         window.location = '/quiz/'+id
+     },
      submit(){
         this.value = theme.value
         axios.get('/quiz/reset')
