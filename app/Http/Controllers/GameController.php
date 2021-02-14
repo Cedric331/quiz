@@ -9,6 +9,7 @@ use App\Questionnaire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class GameController extends Controller
 {
@@ -82,14 +83,14 @@ class GameController extends Controller
       return response()->json(null, 200);
     }
 
-    public function deleteQuiz($id)
+    public function deleteQuiz(Questionnaire $id)
     {
       $questionnaire = Questionnaire::findOrFail($id);
 
-      if ($id == Auth::user()->id) {
-        $questionnaire->delete();
+      if (Gate::allows('questionnaire-edit', $questionnaire)) {
 
-        return response()->json(null, 200);
+        $questionnaire->delete();
+        return response()->json('Quiz supprimé', 200);
       }
       else {
          return response()->json('Action non autorisée', 401);
