@@ -4975,7 +4975,7 @@ __webpack_require__.r(__webpack_exports__);
         responseError: responseError.value
       }).then(function (response) {
         if (response.status == 200) {
-          question.value = "", responseValid.value = "", responseError.value = "", _this2.number = response.data;
+          question.value = "", responseValid.value = "", responseError.value = "", _this2.numbers = response.data;
 
           _this2.$notify({
             group: 'success',
@@ -4996,6 +4996,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       erreurs: {},
+      numbers: this.number,
       question: '',
       response: '',
       responseValid: '',
@@ -5068,7 +5069,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      erreurs: {}
+      erreurs: {},
+      titre: ''
     };
   },
   methods: {
@@ -5209,7 +5211,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.value = theme.value;
-      axios.get('/quiz/reset').then(function (response) {
+      axios.get('/reset/quiz').then(function (response) {
         if (response.status == 200) {
           _this.quizz = response.data;
           var array = [];
@@ -5228,7 +5230,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.value = '';
-      axios.get('/quiz/reset').then(function (response) {
+      axios.get('/reset/quiz').then(function (response) {
         if (response.status == 200) {
           _this2.quizz = response.data;
         }
@@ -5238,7 +5240,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       erreurs: {},
-      'value': '',
+      value: '',
       array: '',
       quizz: this.questionnaires
     };
@@ -41659,7 +41661,7 @@ var render = function() {
                         _c("p", { staticClass: "text-muted" }, [
                           _vm._v(
                             "Nombre de question actuellement : " +
-                              _vm._s(_vm.number)
+                              _vm._s(_vm.numbers)
                           )
                         ]),
                         _vm._v(" "),
@@ -41739,7 +41741,7 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "text-center" }, [
-                      _vm.number >= 5
+                      _vm.numbers >= 5
                         ? _c(
                             "button",
                             {

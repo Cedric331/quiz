@@ -59,7 +59,7 @@ export default {
      },
      submit(){
         this.value = theme.value
-        axios.get('/quiz/reset')
+        axios.get('/reset/quiz')
          .then(response => {
             if (response.status == 200) {
               this.quizz = response.data
@@ -78,7 +78,7 @@ export default {
      },
       reset(){
          this.value = ''
-        axios.get('/quiz/reset')
+        axios.get('/reset/quiz')
          .then(response => {
             if (response.status == 200) {
               this.quizz = response.data
@@ -91,7 +91,7 @@ export default {
   data () {
     return {
        erreurs: {},
-       'value': '',
+       value: '',
        array: '',
        quizz: this.questionnaires
     }

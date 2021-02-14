@@ -87,7 +87,7 @@ class QuizController extends Controller
     {
       $questionnaire = Questionnaire::findOrFail($id);
 
-      if (Gate::allows('questionnaire-edit', $questionnaire) && $questionnaire->valide == false) {
+      if (Gate::allows('questionnaire-edit', $questionnaire) && $questionnaire->valide == true) {
           return Inertia::render('ValideQuestionnaire', [
              'questionnaire' => $questionnaire
           ]);

@@ -13,7 +13,7 @@
               <form class="text-center" style="color: #757575;" @submit.prevent="submit">
                 <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Création des questions pour "{{questionnaire.titre}}"</h3>
                <p class="text-muted">Il faut au moins 5 questions pour valider le questionnaire</p>
-               <p class="text-muted">Nombre de question actuellement : {{number}}</p>
+               <p class="text-muted">Nombre de question actuellement : {{numbers}}</p>
             <div>
 
                <div class="form-floating">
@@ -42,7 +42,7 @@
 
               </form>
                <div class="text-center">
-                  <button v-if="number >= 5" @click="termine()" type="button" class="btn btn-outline-success btn-rounded my-4 ml-2 waves-effect">Terminer</button>
+                  <button v-if="numbers >= 5" @click="termine()" type="button" class="btn btn-outline-success btn-rounded my-4 ml-2 waves-effect">Terminer</button>
                </div>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default {
                question.value = "",
                responseValid.value = "",
                responseError.value = "",
-               this.number = response.data
+               this.numbers = response.data
                this.$notify({
                   group: 'success',
                   type: 'success',
@@ -115,6 +115,7 @@ export default {
   data () {
     return {
        erreurs: {},
+       numbers: this.number,
        question: '',
        response: '',
        responseValid: '',

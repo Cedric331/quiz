@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@index')->name('home')->middleware('guest');
 
 Route::get('/quiz', 'GameController@index')->name('quiz-index');
 Route::get('/quiz/{id}', 'GameController@Quiz')->name('quiz');
-Route::get('/quiz/reset', 'GameController@questionnaires');
+Route::get('/reset/quiz', 'GameController@questionnaires');
 
 Route::get('/account', 'UserController@index')->name('account')->middleware('auth');
 
