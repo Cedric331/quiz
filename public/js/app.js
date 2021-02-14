@@ -4946,7 +4946,7 @@ __webpack_require__.r(__webpack_exports__);
     termine: function termine() {
       var _this = this;
 
-      if (this.number < 5) {
+      if (this.numbers < 5) {
         this.$notify({
           group: 'success',
           type: 'warning',
@@ -5405,6 +5405,8 @@ __webpack_require__.r(__webpack_exports__);
       window.location = "/quiz";
     },
     suivante: function suivante() {
+      this.rand = Math.round(Math.random());
+
       if (this.questions.length - 1 === this.counter) {
         document.querySelector('#resultat').innerHTML = 'Quiz Terminé!';
         document.querySelector('#question').classList.add('visually-hidden');

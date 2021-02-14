@@ -49,6 +49,7 @@ export default {
         window.location = "/quiz"
      },
      suivante(){
+        this.rand = Math.round(Math.random());
          if (this.questions.length-1 === this.counter) {
            document.querySelector('#resultat').innerHTML ='Quiz Terminé!'
            document.querySelector('#question').classList.add('visually-hidden')

@@ -60,7 +60,7 @@
 export default {
   methods: {
      termine(){
-        if (this.number < 5) {
+        if (this.numbers < 5) {
                this.$notify({
                   group: 'success',
                   type: 'warning',
