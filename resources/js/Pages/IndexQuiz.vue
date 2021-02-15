@@ -13,7 +13,7 @@
        </div>
 
         <div class="text-center">
-          <button v-if="value != ''" type="button" @click="reset()" class="ml-2 btn btn-outline-primary btn-rounded my-4 waves-effect">Voir tout les quiz</button>
+          <button v-if="value != ''" type="button" @click="reset()" class="ml-2 btn btn-outline-primary btn-rounded my-4 waves-effect">Voir tous les quiz</button>
         </div>
       <hr>
 
@@ -25,7 +25,7 @@
     <div class="row">
 
       <div v-if="quizz.length == 0" >
-         <h2>Oups! Nous n'avons pas de quiz avec ce thème, vous pouvez <a :href="url">créer un quiz</a> si vous le voulez</h2>
+         <h2>Oups! Nous n'avons pas de quiz avec ce thème, vous pouvez <a :href="url">créer un quiz</a></h2>
       </div>
 
       <div v-for="quiz in quizz" :key="quiz.id" class="col-md-4 mb-4" >

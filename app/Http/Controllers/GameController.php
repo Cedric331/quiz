@@ -94,11 +94,12 @@ class GameController extends Controller
          'id' => 'required'
       ]);
 
-      if ($request->id == Auth::user()->id) {
+      $questionnaire = Questionnaire::findOrFail($request->id);
+
+      if ($questionnaire->user_id == Auth::user()->id) {
          return response()->json(null, 201);
       }
 
-      $questionnaire = Questionnaire::findOrFail($request->id);
       $questionnaire->counter = $questionnaire->counter + 1;
       $questionnaire->save();
 

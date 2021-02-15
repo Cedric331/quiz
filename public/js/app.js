@@ -42701,7 +42701,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Voir tout les quiz")]
+              [_vm._v("Voir tous les quiz")]
             )
           : _vm._e()
       ]),
@@ -42737,8 +42737,7 @@ var render = function() {
                       ),
                       _c("a", { attrs: { href: _vm.url } }, [
                         _vm._v("créer un quiz")
-                      ]),
-                      _vm._v(" si vous le voulez")
+                      ])
                     ])
                   ])
                 : _vm._e(),
