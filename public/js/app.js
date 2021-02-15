@@ -5360,25 +5360,29 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.value = theme.value;
-      axios.get('/reset/quiz').then(function (response) {
-        if (response.status == 200) {
-          _this.quizz = response.data;
-          var array = [];
 
-          for (var i = 0; i != _this.quizz.length; i++) {
-            if (_this.quizz[i].theme == theme.value) {
-              array.push(_this.quizz[i]);
+      if (theme.value != 'Choisir un thème') {
+        axios.get('/reset/quiz').then(function (response) {
+          if (response.status == 200) {
+            _this.quizz = response.data;
+            var array = [];
+
+            for (var i = 0; i != _this.quizz.length; i++) {
+              if (_this.quizz[i].theme == theme.value) {
+                array.push(_this.quizz[i]);
+              }
             }
-          }
 
-          _this.quizz = array;
-        }
-      })["catch"](function (error) {});
+            _this.quizz = array;
+          }
+        })["catch"](function (error) {});
+      }
     },
     reset: function reset() {
       var _this2 = this;
 
       this.value = '';
+      theme.value = 'Choisir un thème';
       axios.get('/reset/quiz').then(function (response) {
         if (response.status == 200) {
           _this2.quizz = response.data;
@@ -42649,7 +42653,12 @@ var render = function() {
           "select",
           {
             staticClass: "form-select",
-            attrs: { id: "theme", "aria-label": "Theme du questionnaire" }
+            attrs: { id: "theme", "aria-label": "Theme du questionnaire" },
+            on: {
+              click: function($event) {
+                return _vm.submit()
+              }
+            }
           },
           [
             _c("option", { attrs: { disabled: "", selected: "" } }, [
@@ -42662,12 +42671,7 @@ var render = function() {
                 {
                   key: theme.id,
                   attrs: { "v-model": theme },
-                  domProps: { value: theme.titre },
-                  on: {
-                    click: function($event) {
-                      return _vm.submit()
-                    }
-                  }
+                  domProps: { value: theme.titre }
                 },
                 [_vm._v(_vm._s(theme.titre))]
               )
