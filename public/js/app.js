@@ -4955,14 +4955,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  watch: {},
   methods: {
-    deleteQuiz: function deleteQuiz(id, count) {
+    valueQuiz: function valueQuiz(id, count) {
+      this.id = id;
+      this.count = count;
+    },
+    deleteQuiz: function deleteQuiz() {
       var _this = this;
 
-      this.nbQuizFinish = this.nbQuizFinish - count;
+      this.nbQuizFinish = this.nbQuizFinish - this.count;
       this.nbQuiz--;
-      axios["delete"]('/quiz/delete/' + id).then(function (res) {
+      axios["delete"]('/quiz/delete/' + this.id).then(function (res) {
         if (res.status == 200) {
           _this.$notify({
             group: 'success',
@@ -4991,7 +5012,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       quizz: this.questionnaires,
       nbQuiz: 0,
-      nbQuizFinish: 0
+      nbQuizFinish: 0,
+      id: 0,
+      count: 0
     };
   },
   mounted: function mounted() {
@@ -5385,6 +5408,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41876,6 +41920,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "mb-5" },
     [
       _c("notifications", {
         attrs: { group: "success", position: "bottom right" }
@@ -41885,7 +41930,10 @@ var render = function() {
         _c("section", { staticClass: "p-5 z-depth-1" }, [
           _c(
             "div",
-            { staticClass: "row d-flex justify-content-center bg-white p-2" },
+            {
+              staticClass:
+                "row d-flex justify-content-center bg-color-custom rounded p-2"
+            },
             [
               _c("h3", { staticClass: "text-center font-weight-bold mb-5" }, [
                 _vm._v("Compteur")
@@ -41934,7 +41982,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("p", { staticClass: "font-weight-normal text-muted" }, [
                   _vm._v(
-                    "Nombre de fois où les utilisateurs ont utilisés vos quiz"
+                    "Nombre de fois où les utilisateurs ont utilisés vos\n                            quiz"
                   )
                 ])
               ])
@@ -41944,62 +41992,115 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "container my-5" }, [
-        _c("section", [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-8 m-auto" }, [
-              _c("div", { staticClass: "card card-list" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c(
-                    "ul",
-                    { staticClass: "list-unstyled mb-0" },
-                    _vm._l(_vm.quizz, function(quiz) {
-                      return _c(
-                        "li",
-                        {
-                          key: quiz.id,
-                          staticClass:
-                            "d-flex justify-content-between align-items-center py-2 border-bottom"
-                        },
-                        [
-                          _c("div", { staticClass: "d-inline-flex" }, [
-                            _c("p", { staticClass: "mb-0" }, [
-                              _c("span", { staticClass: "text" }, [
-                                _vm._v(_vm._s(quiz.titre))
-                              ])
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-8 m-auto" }, [
+            _c("div", { staticClass: "card card-list" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "ul",
+                  { staticClass: "list-unstyled mb-0" },
+                  _vm._l(_vm.quizz, function(quiz) {
+                    return _c(
+                      "li",
+                      {
+                        key: quiz.id,
+                        staticClass:
+                          "d-flex justify-content-between align-items-center py-2 border-bottom"
+                      },
+                      [
+                        _c("div", { staticClass: "d-inline-flex" }, [
+                          _c("p", { staticClass: "mb-0" }, [
+                            _c("span", { staticClass: "text" }, [
+                              _vm._v(_vm._s(quiz.titre))
                             ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "tools" }, [
-                            _c(
-                              "a",
-                              {
-                                attrs: { href: "#" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.deleteQuiz(quiz.id, quiz.counter)
-                                  }
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "far fa-trash-alt fa-1x"
-                                })
-                              ]
-                            )
                           ])
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "tools" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-outline-danger",
+                              staticStyle: { border: "none" },
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#modalConfirmDelete"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.valueQuiz(quiz.id, quiz.counter)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "far fa-trash-alt fa-1x" })]
+                          )
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
               ])
             ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "modalConfirmDelete",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-sm modal-notify modal-danger",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content text-center" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer flex-center" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-danger",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteQuiz()
+                        }
+                      }
+                    },
+                    [_vm._v("Oui")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn  btn-danger waves-effect",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Non")]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      )
     ],
     1
   )
@@ -42019,6 +42120,20 @@ var staticRenderFns = [
         _c("p", { staticClass: "h5-responsive font-weight-bold mb-0" }, [
           _c("i", { staticClass: "fas fa-clipboard-list pr-2" }),
           _vm._v("Mes Quiz")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-header d-flex justify-content-center" },
+      [
+        _c("p", { staticClass: "heading" }, [
+          _vm._v("Etes-vous sûr de supprimer ce quiz?")
         ])
       ]
     )
@@ -42422,90 +42537,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "header",
-    {
-      staticStyle: {
-        "background-image":
-          "url('https://mdbootstrap.com/img/Photos/Others/gradient2.png')",
-        "background-repeat": "no-repeat",
-        "background-size": "cover",
-        "background-position": "center center",
-        height: "100vh"
-      }
-    },
-    [
-      _c(
-        "div",
-        {
-          staticClass: "view jarallax",
-          attrs: { "data-jarallax": '{"speed": 0.2}' }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "mask rgba-purple-slight d-flex justify-content-center align-items-center"
-            },
-            [
-              _c("div", { staticClass: "container" }, [
-                _c("div", { staticClass: "row wow fadeIn" }, [
-                  _c("div", { staticClass: "col-md-12 text-center" }, [
+  return _c("header", [
+    _c(
+      "div",
+      {
+        staticClass: "view jarallax",
+        attrs: { "data-jarallax": '{"speed": 0.2}' }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "mask rgba-purple-slight d-flex justify-content-center align-items-center"
+          },
+          [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row wow fadeIn" }, [
+                _c("div", { staticClass: "col-md-12 text-center" }, [
+                  _c(
+                    "h1",
+                    {
+                      staticClass:
+                        "display-4 font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInUp"
+                    },
+                    [_vm._v("Bienvenue sur SuperQuiz")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h5",
+                    {
+                      staticClass:
+                        "pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 wow fadeInUp",
+                      attrs: { "data-wow-delay": "0.2s" }
+                    },
+                    [
+                      _vm._v(
+                        "Participer à des quiz et vous pouvez même en créer, il faut juste "
+                      ),
+                      _c("a", { attrs: { href: _vm.url } }, [
+                        _vm._v("créer un compte")
+                      ]),
+                      _vm._v(" et c'est gratuit.")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [
                     _c(
-                      "h1",
+                      "a",
                       {
-                        staticClass:
-                          "display-4 font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInUp"
+                        staticClass: "btn btn-primary btn-lg btn-rounded my-5",
+                        attrs: { href: _vm.quiz }
                       },
-                      [_vm._v("Bienvenue sur SuperQuiz")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "h5",
-                      {
-                        staticClass:
-                          "pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 wow fadeInUp",
-                        attrs: { "data-wow-delay": "0.2s" }
-                      },
-                      [
-                        _vm._v(
-                          "Participer à des quiz et vous pouvez même en créer, il faut juste "
-                        ),
-                        _c("a", { attrs: { href: _vm.url } }, [
-                          _vm._v("créer un compte")
-                        ]),
-                        _vm._v(" et c'est gratuit.")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "wow fadeInUp",
-                        attrs: { "data-wow-delay": "0.4s" }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "btn btn-purple btn-lg btn-rounded my-5",
-                            attrs: { href: _vm.quiz }
-                          },
-                          [_vm._v("Jouer à un Quiz")]
-                        )
-                      ]
+                      [_vm._v("Jouer à un Quiz")]
                     )
                   ])
                 ])
               ])
-            ]
-          )
-        ]
-      )
-    ]
-  )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42748,7 +42842,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container my-5 p-5 z-depth-1 unique-color-dark" },
+    { staticClass: "container my-1 p-5 z-depth-1 unique-color-dark" },
     [
       _c(
         "section",
@@ -42768,97 +42862,149 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("div", { staticClass: "row d-flex justify-content-around " }, [
-            _c("div", { staticClass: "col-12 col-md-8 mb-4 bg-white p-3" }, [
-              _c("div", { staticClass: "mb-3" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "pseudo" } },
-                  [_vm._v("Pseudo")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.pseudo,
-                      expression: "pseudo"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text" },
-                  domProps: { value: _vm.pseudo },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.pseudo = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mb-3" }, [
-                _c(
-                  "label",
-                  { staticClass: "form-label", attrs: { for: "email" } },
-                  [_vm._v("Adresse email")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.emailUpdate,
-                      expression: "emailUpdate"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "email", "aria-describedby": "adresse email" },
-                  domProps: { value: _vm.emailUpdate },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.emailUpdate = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-success",
-                  on: {
-                    click: function($event) {
-                      return _vm.update()
-                    }
-                  }
-                },
-                [_vm._v("Valider")]
-              )
-            ]),
-            _vm._v(" "),
             _c(
-              "a",
-              {
-                staticClass: "col-12 col-md-6 mt-5 itemAccount",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    return _vm.deleteUser()
-                  }
-                }
-              },
-              [_vm._m(0)]
+              "div",
+              { staticClass: "col-12 col-md-8 mb-4 p-3 bg-color-custom" },
+              [
+                _c("div", { staticClass: "mb-3" }, [
+                  _c(
+                    "label",
+                    { staticClass: "form-label", attrs: { for: "pseudo" } },
+                    [_vm._v("Pseudo")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.pseudo,
+                        expression: "pseudo"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.pseudo },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.pseudo = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _c(
+                    "label",
+                    { staticClass: "form-label", attrs: { for: "email" } },
+                    [_vm._v("Adresse email")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.emailUpdate,
+                        expression: "emailUpdate"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      "aria-describedby": "adresse email"
+                    },
+                    domProps: { value: _vm.emailUpdate },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.emailUpdate = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-success",
+                    on: {
+                      click: function($event) {
+                        return _vm.update()
+                      }
+                    }
+                  },
+                  [_vm._v("Modifier")]
+                ),
+                _vm._v(" "),
+                _c("hr", { staticClass: "w-50 mx-auto mt-5" }),
+                _vm._v(" "),
+                _vm._m(0)
+              ]
             )
           ])
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "modalConfirmDelete",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-sm modal-notify modal-danger",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content text-center" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer flex-center" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-outline-danger",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteUser()
+                        }
+                      }
+                    },
+                    [_vm._v("Oui")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn  btn-danger waves-effect",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Annuler")]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
       )
     ]
   )
@@ -42868,14 +43014,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("i", { staticClass: "fas fa-brain fa-3x text-white" }),
-      _vm._v(" "),
-      _c(
-        "h5",
-        { staticClass: "text-white font-weight-bold my-4 text-uppercase" },
-        [_vm._v("Supprimer mon compte")]
-      )
+    return _c("div", { staticClass: "col-12 col-md-6 mt-5 m-auto" }, [
+      _c("h5", { staticClass: "font-weight-bold my-4 text-danger" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: {
+              type: "button",
+              "data-toggle": "modal",
+              "data-target": "#modalConfirmDelete"
+            }
+          },
+          [_vm._v("Supprimer mon compte")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-header d-flex justify-content-center" },
+      [
+        _c("p", { staticClass: "heading" }, [
+          _vm._v("Êtes-vous sûr de supprimer votre compte?")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("p", [_vm._v("Attention vos quiz seront également supprimés")])
     ])
   }
 ]

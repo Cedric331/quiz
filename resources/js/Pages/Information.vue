@@ -1,12 +1,12 @@
 <template>
 
-<div class="container my-5 p-5 z-depth-1 unique-color-dark">
+<div class="container my-1 p-5 z-depth-1 unique-color-dark">
   <section class="text-center white-text">
     <h2 class="font-weight-bold mb-4 pb-2 text-white text-uppercase">Mes Informations</h2>
 <notifications group="success" position="bottom right" />
     <div class="row d-flex justify-content-around ">
 
-   <div class="col-12 col-md-8 mb-4 bg-white p-3">
+   <div class="col-12 col-md-8 mb-4 p-3 bg-color-custom">
       <div class="mb-3">
         <label for="pseudo" class="form-label">Pseudo</label>
         <input type="text" class="form-control" v-model="pseudo">
@@ -15,19 +15,40 @@
         <label for="email" class="form-label">Adresse email</label>
         <input type="email" class="form-control" v-model="emailUpdate" aria-describedby="adresse email">
       </div>
-      <button @click="update()" class="btn btn-outline-success">Valider</button>
+      <button @click="update()" class="btn btn-outline-success">Modifier</button>
+      <hr class="w-50 mx-auto mt-5">
+      <div class="col-12 col-md-6 mt-5 m-auto">
+         <h5 class="font-weight-bold my-4 text-danger">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmDelete">Supprimer mon compte</button>
+         </h5>
+      </div>
    </div>
 
 
-   <a @click="deleteUser()" href="#" class="col-12 col-md-6 mt-5 itemAccount">
-      <div>
-        <i class="fas fa-brain fa-3x text-white"></i>
-            <h5 class="text-white font-weight-bold my-4 text-uppercase">Supprimer mon compte</h5>
-      </div>
-   </a>
-
     </div>
   </section>
+
+
+
+
+<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">Êtes-vous sûr de supprimer votre compte?</p>
+      </div>
+      <div class="modal-body">
+        <p>Attention vos quiz seront également supprimés</p>
+      </div>
+      <div class="modal-footer flex-center">
+        <a href="#" @click="deleteUser()" class="btn btn-outline-danger">Oui</a>
+        <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">Annuler</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 </template>

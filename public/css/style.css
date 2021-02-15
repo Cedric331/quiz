@@ -1,16 +1,40 @@
 *{
-   padding:0;
-   margin:0;
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: 'Newsreader', serif;
 }
 
-body{
-   height:100%;
+
+#contents {
+    flex: 1;
 }
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+ }
 
 .btn-purple{
    color:rgb(206, 195, 216);
    background-color: rgb(199, 165, 55);
    transition: transform 1s;
+}
+
+footer{
+   height:60px;
+   background-color:rgb(255, 255, 255);
+   right: 0;
+   bottom: 0;
+   left: 0;
+}
+
+
+.bg-color-custom{
+   background-color: rgb(236, 238, 238);
+   border: 1px solid black;
 }
 
 
