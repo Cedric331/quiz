@@ -5,7 +5,6 @@
    font-family: 'Newsreader', serif;
 }
 
-
 #contents {
     flex: 1;
 }
@@ -31,6 +30,11 @@ footer{
    left: 0;
 }
 
+.border-top {
+   border-top: 5px solid #33b5e5 !important;
+   border-top-left-radius: .25rem!important;
+    border-top-right-radius: .25rem!important;
+ }
 
 .bg-color-custom{
    background-color: rgb(236, 238, 238);

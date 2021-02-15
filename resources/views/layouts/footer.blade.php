@@ -15,7 +15,7 @@
        <div class="col-md-6 d-flex justify-content-end">
          <ul class="list-unstyled d-flex mb-0">
            <li>
-              <a class="mr-3" role="button">Contact</a>
+              <a class="mr-3" href="{{ route('contact') }}" role="button">Contact</a>
            </li>
          </ul>
        </div>

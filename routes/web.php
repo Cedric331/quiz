@@ -40,5 +40,9 @@ Route::get('/account/information', 'UserController@information')->name('user-inf
 Route::post('/account/information/update', 'UserController@update')->middleware('auth');
 Route::post('/account/delete', 'UserController@delete')->name('user-delete')->middleware('auth');
 
+// Route::get('/contact/merci', 'ContactController@index')->name('contact-merci');
+Route::get('/contact', 'ContactController@index')->name('contact');
+Route::post('/contact', 'ContactController@send')->name('contact-post');
+
 Auth::routes();
 
