@@ -49,7 +49,7 @@ class UserController extends Controller
    {
       if ($request->name != Auth::user()->name) {
          $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'alpha_dash'],
          ]);
       }
       if ($request->email != Auth::user()->email) {

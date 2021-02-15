@@ -43019,7 +43019,7 @@ var staticRenderFns = [
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn btn-danger",
             attrs: {
               type: "button",
               "data-toggle": "modal",
@@ -43040,7 +43040,7 @@ var staticRenderFns = [
       { staticClass: "modal-header d-flex justify-content-center" },
       [
         _c("p", { staticClass: "heading" }, [
-          _vm._v("Êtes-vous sûr de supprimer votre compte?")
+          _vm._v("Êtes-vous sûr de vouloir supprimer votre compte?")
         ])
       ]
     )
@@ -43050,7 +43050,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-body" }, [
-      _c("p", [_vm._v("Attention vos quiz seront également supprimés")])
+      _c("p", [_vm._v("Attention, vos quiz seront également supprimés!")])
     ])
   }
 ]

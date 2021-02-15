@@ -19,7 +19,7 @@
       <hr class="w-50 mx-auto mt-5">
       <div class="col-12 col-md-6 mt-5 m-auto">
          <h5 class="font-weight-bold my-4 text-danger">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmDelete">Supprimer mon compte</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmDelete">Supprimer mon compte</button>
          </h5>
       </div>
    </div>
@@ -36,10 +36,10 @@
   <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
     <div class="modal-content text-center">
       <div class="modal-header d-flex justify-content-center">
-        <p class="heading">Êtes-vous sûr de supprimer votre compte?</p>
+        <p class="heading">Êtes-vous sûr de vouloir supprimer votre compte?</p>
       </div>
       <div class="modal-body">
-        <p>Attention vos quiz seront également supprimés</p>
+        <p>Attention, vos quiz seront également supprimés!</p>
       </div>
       <div class="modal-footer flex-center">
         <a href="#" @click="deleteUser()" class="btn btn-outline-danger">Oui</a>
