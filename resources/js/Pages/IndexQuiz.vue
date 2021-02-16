@@ -4,7 +4,7 @@
         <h3 class="font-weight-bold mb-4 pb-2 text-center dark-grey-text mt-2">Thème du Quiz</h3>
 
        <div class="form-floating container p-2">
-         <select @click="submit()" class="form-select" id="theme" aria-label="Theme du questionnaire">
+         <select @change="submit()" class="form-select"  id="theme" aria-label="Theme du questionnaire">
            <option disabled selected>Choisir un thème</option>
            <option v-for="theme in themes" :key="theme.id" :v-model="theme" :value="theme.titre">{{theme.titre}}</option>
          </select>
@@ -58,8 +58,8 @@ export default {
          window.location = '/quiz/'+id
      },
      submit(){
-        this.value = theme.value
         if(theme.value != 'Choisir un thème'){
+         this.value = theme.value
          axios.get('/reset/quiz')
          .then(response => {
             if (response.status == 200) {
@@ -77,7 +77,6 @@ export default {
          .catch(error => {
          });
         }
-
      },
       reset(){
          this.value = ''

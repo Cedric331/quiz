@@ -5359,9 +5359,8 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      this.value = theme.value;
-
       if (theme.value != 'Choisir un thème') {
+        this.value = theme.value;
         axios.get('/reset/quiz').then(function (response) {
           if (response.status == 200) {
             _this.quizz = response.data;
@@ -42655,7 +42654,7 @@ var render = function() {
             staticClass: "form-select",
             attrs: { id: "theme", "aria-label": "Theme du questionnaire" },
             on: {
-              click: function($event) {
+              change: function($event) {
                 return _vm.submit()
               }
             }
